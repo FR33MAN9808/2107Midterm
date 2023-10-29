@@ -5,12 +5,14 @@ import axios from 'axios';
 import Navbar from '../../components/Navbar/Navbar';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { Box } from '@mui/material';
+import LoadingIcon from '../../components/LoadinIcon/LoadingIcon';
 
 const URL = "https://fakestoreapi.com/products/category";
 
 const CategoryPage = props => {
   const {category} = useParams()
   const [catrgoryData, setCategoryData] = useState([])
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getDataByCategory();
@@ -20,21 +22,27 @@ const CategoryPage = props => {
     try {
       const { data } = await axios.get(`${URL}/${category}`);
       setCategoryData(data);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setLoading(false);
     }
   };
 
   return (
     <>
       <Navbar showViewMore={true}/>
-      <Box display='grid' gridTemplateColumns='auto auto auto auto' gap='20px' marginTop={2}>
+      {loading ? (
+        <LoadingIcon />
+      ) : (
+        <Box display='grid' gridTemplateColumns='auto auto auto auto' gap='20px' marginTop={2}>
         {
             catrgoryData.map((data, index) =>{
                 return <ProductCard data={data} key={index}/>
             })
         }
       </Box>
+      )}
     </>
   )
 }

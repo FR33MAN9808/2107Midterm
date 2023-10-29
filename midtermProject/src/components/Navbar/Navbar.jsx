@@ -15,7 +15,7 @@ const Navbar = ({showViewMore}) => {
   }
 
   return (
-    <AppBar position="static" variant='outlined' color='inherit' sx={{boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', color:'black', borderRadius: '10px' }}>
+    <AppBar position="static" variant='elevation' color='inherit' sx={{boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', color:'black', borderRadius: '10px' }}>
       <Container>
         <Toolbar>
           <Icon className="material-icons" sx={{ fontSize: 40, marginRight: 1 }}>
