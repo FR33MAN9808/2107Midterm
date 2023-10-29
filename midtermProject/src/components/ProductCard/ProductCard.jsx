@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import Rating from '@mui/material/Rating';
 
 const ProductCard = ({ data }) => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const ProductCard = ({ data }) => {
         </Typography>
 
         <Typography variant='body2' color='textSecondary'>
-          Rating: {data.rating.rate}/5.0
+          <Rating name="read-only" value={data.rating.rate} readOnly/> {/* Display rating as stars */}
         </Typography>
       </CardContent>
 

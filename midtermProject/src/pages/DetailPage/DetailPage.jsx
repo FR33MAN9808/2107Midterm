@@ -38,7 +38,7 @@ const DetailPage = (props) => {
   };
 
   return (
-    <Container maxWidth="lg" style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', borderRadius: '10px' }}>
+    <Container maxWidth="lg" style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', borderRadius: '10px', backgroundColor: 'grey' }}>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <Card>
