@@ -3,6 +3,7 @@ import axios from 'axios'
 import PropTypes from 'prop-types'
 import { Box, grid2Classes } from '@mui/material';
 import ProductCard from '../../components/ProductCard/ProductCard';
+import Navbar from '../../components/Navbar/Navbar';
 
 const URL = "https://fakestoreapi.com/products";
 
@@ -25,7 +26,8 @@ const Homepage = props => {
 
   return (
     <>
-      <Box display='grid' gridTemplateColumns='auto auto auto' gap='20px'>
+      <Navbar showViewMore={false}/>
+      <Box display='grid' gridTemplateColumns='auto auto auto auto' gap='20px' marginTop={2}>
         {
             productData.map((data, index) =>{
                 return <ProductCard data={data} key={index}/>

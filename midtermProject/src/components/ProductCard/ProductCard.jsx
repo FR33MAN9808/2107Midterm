@@ -1,66 +1,52 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types'
-import Box from '@mui/material/Box';
+import React from 'react';
+import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { CardMedia } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const ProductCard = ({ data }) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-  
-    const navigateToDetail = () => {
-      navigate(`/detail/${data.id}`)
-    }
-  
-    const navigateToHomepage = () => {
-      navigate(`/`)
-    }
-  
-    return (
-      <Card variant='outlined'>
-          <CardContent>
-          <CardMedia 
-            sx={{height:200}} 
-            image={data.image} 
-            title={data.title}
-        />
-  
-          <Typography variant='h4' component="div">
-            {data.title}
-          </Typography>
-  
-          <Box display="flex" flexDirection="column">
-            <Typography>
-              Price: {`${data.price}$`}
-            </Typography>
-            <Typography>
-              Rating: {data.rating.rate}
-            </Typography>
-          </Box>
-          </CardContent>
-  
-          <CardActions>
-            {
-              <Button onClick={navigateToDetail} variant='contained' color='primary'>Details</Button>
-            }
-          </CardActions>
-  
-          <CardActions>
-            {
-              <Button onClick={navigateToHomepage} variant='contained' color='primary'>Go Back</Button>
-            }
-          </CardActions>
-      </Card>
-    );
-  };
-  
-  ProductCard.propTypes = {
-      data: PropTypes.any
+  const navigateToDetail = () => {
+    navigate(`/detail/${data.id}`);
   }
-  
-  export default ProductCard
+
+  return (
+    <Card elevation={3}>
+      <CardMedia
+        sx={{ height: 200 }}
+        image={data.image}
+      />
+
+      <CardContent>
+        <Typography variant='h6' component="div" gutterBottom>
+          {data.title}
+        </Typography>
+
+        <Typography variant='body2' color='black' fontSize={30} fontFamily='Roboto, sans-serif'>
+          ${data.price}
+        </Typography>
+
+        <Typography variant='body2' color='textSecondary'>
+          Rating: {data.rating.rate}/5.0
+        </Typography>
+      </CardContent>
+
+      <CardActions>
+        <Button onClick={navigateToDetail} variant='outlined' color='inherit' sx={{ width: '100%' }}>
+          Details
+        </Button>
+      </CardActions>
+    </Card>
+  );
+};
+
+ProductCard.propTypes = {
+  data: PropTypes.object.isRequired
+};
+
+export default ProductCard;
